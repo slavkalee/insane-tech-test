@@ -87,9 +87,9 @@
 <script setup lang="ts">
 import { defineProps, defineEmits, PropType, computed } from 'vue';
 import { useStore } from 'vuex';
-import { useForm } from '@/compositions/form';
+import { useForm } from '../compositions/form';
 
-import { IUser } from '@/models/index';
+import { IUser } from '../models/index';
 import Spinner from '@/components/Spinner.vue';
 import UserFormField from '@/components/UserFormField.vue';
 
@@ -104,7 +104,7 @@ const store = useStore();
 
 const { values, v$, handleChange } = useForm(initialValues);
 
-const isSubmitting = computed(() => store.state.users.isSubmitting);
+const isSubmitting = computed(() => store.state.isSubmitting);
 
 const submit = () => {
   v$.value.$touch();

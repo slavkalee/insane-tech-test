@@ -2,8 +2,8 @@ import { computed } from 'vue';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 
-import { actionTypes } from '@/store/modules/users';
-import { IUser } from '@/models/index';
+import { ActionTypes } from '../store/index';
+import { IUser } from '../models/index';
 
 export function useCurrentUser(id: number) {
   const store = useStore();
@@ -12,14 +12,14 @@ export function useCurrentUser(id: number) {
   const user = computed(() => store.getters.getUser(id));
 
   const removeUser = () => {
-    store.dispatch(actionTypes.removeUser, id).then(() => {
+    store.dispatch(ActionTypes.REMOVE_USER, id).then(() => {
       router.push({ name: 'users' });
     });
   };
 
   const editUser = (values: IUser) => {
     store
-      .dispatch(actionTypes.editUser, values)
+      .dispatch(ActionTypes.EDIT_USER, values)
       .then(() => router.push({ name: 'user', params: { id } }));
   };
 

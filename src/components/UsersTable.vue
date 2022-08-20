@@ -45,7 +45,7 @@
 import { defineProps, PropType } from 'vue';
 import { useRouter } from 'vue-router';
 
-import { IUser } from '@/models/index';
+import { IUser } from '../models/index';
 
 const router = useRouter();
 

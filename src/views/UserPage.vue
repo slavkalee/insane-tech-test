@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router';
-import { useCurrentUser } from '@/compositions/currentUser';
+import { useCurrentUser } from '../compositions/currentUser';
 
 import UserProfile from '@/components/UserProfile.vue';
 

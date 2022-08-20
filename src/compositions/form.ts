@@ -2,11 +2,21 @@ import { reactive, computed, watchEffect } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
 import { required, email, minLength } from '@vuelidate/validators';
 
-import { IUser } from '@/models/index';
+import { IUser } from '../models/index';
+
+type Values = {
+  id: string;
+  firstName: string;
+  lastName: string;
+  middleName: string;
+  phoneNumber: string;
+  email: string;
+  tags: string;
+};
 
 export function useForm(initialValues: IUser) {
-  const values: IUser = reactive({
-    id: initialValues.id,
+  const values: Values = reactive({
+    id: initialValues.id + '',
     firstName: initialValues.firstName,
     lastName: initialValues.lastName,
     middleName: initialValues.middleName,
@@ -28,7 +38,7 @@ export function useForm(initialValues: IUser) {
   const v$ = useVuelidate(rules, values);
 
   const handleChange = (value: string, fieldName: string) => {
-    values[fieldName] = value;
+    values[fieldName as keyof Values] = value;
   };
 
   watchEffect(() => {

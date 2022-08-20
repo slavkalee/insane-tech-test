@@ -61,7 +61,7 @@
 import { defineProps, defineEmits, PropType, computed } from 'vue';
 import { useStore } from 'vuex';
 
-import { IUser } from '@/models/index';
+import { IUser } from '../models/index';
 import Spinner from '@/components/Spinner.vue';
 
 const props = defineProps({
@@ -72,7 +72,7 @@ const emit = defineEmits(['onRemove', 'onClickEdit']);
 
 const store = useStore();
 
-const isSubmitting = computed(() => store.state.users.isSubmitting);
+const isSubmitting = computed(() => store.state.isSubmitting);
 
 const remove = () => {
   emit('onRemove');
